@@ -7,15 +7,14 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import requests
 import json
+import os
 
 TMDB_URL = "https://api.themoviedb.org"
-TMDB_API_KEY = "6b379c074459deaec12a4b3ffeb6a33d"
-TMDB_API_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2YjM3OWMwNzQ0NTlkZWFlYzEyYTRiM2ZmZWI2YTMzZCIsInN1YiI6IjYyN" \
-                 "zkxMjc2NzI0ZGUxMzM1MTJmMDQ0ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8fDC73EUeD9eWqx" \
-                 "7Hg3Pb_KHH_cu_6mDR1tV8LdVvhY"
+TMDB_API_KEY = os.getenv("TMDB_PASS")
+TMDB_API_TOKEN = os.getenv("TMDB_TOKEN")
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.getenv("FLASK_PASS")
 app.config['SQLALCHEMY_DATABASE_URI'] = \
     "sqlite:///G:/PyCharm Community Edition 2022.1/PycharmProjects/Movie_Project/movie-collection.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
